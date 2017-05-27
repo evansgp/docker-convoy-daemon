@@ -1,4 +1,4 @@
-FROM rancher/os-base:v1.0.1
+FROM alpine:3.6
 
 ARG CONVOY_VERSION=v0.5.0
 
