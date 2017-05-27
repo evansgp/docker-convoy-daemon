@@ -1,18 +1,20 @@
 # convoy-daemon
 
+Runs [convoy](https://github.com/rancher/convoy) in a container.
 
-sudo ros config get rancher.repositories.evansgp.url https://raw.githubusercontent.com/evansgp/rancheros-registry/master
-sudo ros service list
-sudo ros service enable convoy-daemon
-sudo ros service up convoy-daemon
+# Usage
 
-# or...
+The container needs to be able to configure itself as a plugin and communicate with the docker socket.
 
+E.g. to use the VFS/NFS backend:
 
-sudo ros service enable /var/lib/rancher/conf/example.yml
-#sudo ros service enable https://mydomain.com/example.yml
-sudo ros service up <name>
+```bash
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v /etc/docker/plugins:/etc/docker/plugins -v /opt/storage:/opt/storage daemon --drivers vfs --driver-opts vfs.path=/opt/storage/convoy-volumes
+```
 
-# and...
+# Extra
 
-alias convoy='sudo system-docker exec -it convoy-nfs'
+```bash
+alias convoy='docker exec convoy-daemon'
+convoy list
+```
