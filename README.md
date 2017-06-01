@@ -9,12 +9,12 @@ The container needs to be able to configure itself as a plugin and communicate w
 E.g. to use the VFS/NFS backend:
 
 ```bash
-docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v /etc/docker/plugins:/etc/docker/plugins -v /opt/storage:/opt/storage daemon --drivers vfs --driver-opts vfs.path=/opt/storage/convoy-volumes
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v /etc/docker/plugins:/etc/docker/plugins -v /opt/storage:/opt/storage evansgp/convoy-daemon daemon --drivers vfs --driver-opts vfs.path=/opt/storage/convoy-volumes
 ```
 
 # Extra
 
 ```bash
-alias convoy='docker exec convoy-daemon'
+alias convoy='docker exec convoy-nfs convoy'
 convoy list
 ```
