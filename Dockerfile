@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine
 
 ARG CONVOY_VERSION=v0.5.0
 
